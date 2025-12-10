@@ -1,5 +1,6 @@
 pluginManagement {
     repositories {
+        maven { url = uri("https://maven.myket.ir") }
         google {
             content {
                 includeGroupByRegex("com\\.android.*")
@@ -9,13 +10,16 @@ pluginManagement {
         }
         mavenCentral()
         gradlePluginPortal()
+        maven { url = uri("https://jitpack.io") }
     }
 }
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
+        maven { url = uri("https://maven.myket.ir") }
         google()
         mavenCentral()
+        maven { url = uri("https://jitpack.io") }
     }
 }
 
