@@ -5,8 +5,10 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatTextView;
 
 import com.amirbahadoramiri.applenotebook.R;
+import com.amirbahadoramiri.applenotebook.tools.packager.Packager;
 import com.amirbahadoramiri.applenotebook.views.bases.BaseActivity;
 
 public class AboutActivity extends BaseActivity implements AboutContract.AboutView {
@@ -29,6 +31,7 @@ public class AboutActivity extends BaseActivity implements AboutContract.AboutVi
     }
 
     private void setupViews() {
+        ((AppCompatTextView) findViewById(R.id.activity_about_appversion)).setText(Packager.negareshApplication(this));
         findViewById(R.id.activity_about_telegram).setOnClickListener(v->{ aboutActivityPresenter.telegramClick();});
         findViewById(R.id.activity_about_google).setOnClickListener(v->{ aboutActivityPresenter.gmailClick();});
         findViewById(R.id.activity_about_github).setOnClickListener(v->{ aboutActivityPresenter.githubClick();});
