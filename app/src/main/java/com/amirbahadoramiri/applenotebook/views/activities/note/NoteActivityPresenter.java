@@ -43,7 +43,7 @@ public class NoteActivityPresenter implements NoteContract.NotePresenter {
     @Override
     public void onDeleteCLick() {
         if (old_note == null) {
-            noteView.showToast("نوت ساخته شده که دیلیت نمیشه :)", Toast.LENGTH_SHORT);
+            noteView.showToast("نوت ساخته نشده که دیلیت نمیشه :)", Toast.LENGTH_SHORT);
         } else {
             Logger.logd("note presenter ondelete , old_note id: " + old_note.getId());
             noteDao.delete(old_note)

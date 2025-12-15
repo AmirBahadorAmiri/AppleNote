@@ -109,21 +109,21 @@ public class NoteActivity extends BaseActivity implements NoteContract.NoteView 
     @Override
     public void openMenu() {
         DialogBottom dialogBottom = new DialogBottom(this);
-        dialogBottom.setTitle("Options Menu")
-                .setCancel("cancel", true)
+        dialogBottom.setTitle("گزینه ها")
+                .setCancel("لغو", true)
                 .setCancelStyle(new DialogTextStyle.Builder(this).color(R.color.black).typeface(Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD))
                         .build())
-                .addBottomItem("Save Note", v2 -> {
+                .addBottomItem("ذخیره", v2 -> {
                     noteActivityPresenter.onSaveClick(getTitleEditText(),getTextEditText());
                     dialogBottom.dismiss();
                 }, new DialogTextStyle.Builder(this).color(R.color.ios_like_green).textSize(20).typeface(Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD))
                         .build())
-                    .addBottomItem("Delete Notes", v2 -> {
+                    .addBottomItem("حذف یادداشت", v2 -> {
                         noteActivityPresenter.onDeleteCLick();
                         dialogBottom.dismiss();
                     }, new DialogTextStyle.Builder(this).color(R.color.ios_like_red).textSize(20).typeface(Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD))
                             .build())
-                .addBottomItem("Share Note", v2 -> {
+                .addBottomItem("اشتراک گذاری", v2 -> {
                     noteActivityPresenter.onShareTextClick();
                     dialogBottom.dismiss();
                 }, new DialogTextStyle.Builder(this).color(R.color.black).textSize(20).typeface(Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD))
@@ -143,7 +143,7 @@ public class NoteActivity extends BaseActivity implements NoteContract.NoteView 
 
     @Override
     public void afterTextChanged(Editable s) {
-        if ((Objects.requireNonNull(activity_note_titlebar.getText()).isEmpty() ||  Objects.requireNonNull(activity_note_textbar.getText()).isEmpty())) {
+        if ((Objects.requireNonNull(activity_note_titlebar.getText()).toString().isEmpty() ||  Objects.requireNonNull(activity_note_textbar.getText()).toString().isEmpty())) {
             ((AppCompatTextView) findViewById(R.id.activity_note_save_btn)).setTextColor(ContextCompat.getColor(this,R.color.ios_gray));
         } else {
             ((AppCompatTextView) findViewById(R.id.activity_note_save_btn)).setTextColor(ContextCompat.getColor(this,R.color.ios_gold));

@@ -131,11 +131,11 @@ public class MainActivity extends BaseActivity implements MainContract.MainView 
     @Override
     public void openMenu() {
         DialogBottom dialogBottom = new DialogBottom(this);
-        dialogBottom.setTitle("Options Menu")
-                .setCancel("cancel", true)
+        dialogBottom.setTitle("گزینه ها")
+                .setCancel("لغو", true)
                 .setCancelStyle(new DialogTextStyle.Builder(this).color(R.color.black).typeface(Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD))
                         .build())
-                .addBottomItem("Delete All Notes", v2 -> {
+                .addBottomItem("حذف همه‌ی یادداشت ها", v2 -> {
                     mainActivityPresenter.onDeleteAllNote(noteAdapter.getItemCount());
                     dialogBottom.dismiss();
                 }, new DialogTextStyle.Builder(this).color(R.color.ios_like_red).textSize(20).typeface(Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD))
@@ -145,7 +145,7 @@ public class MainActivity extends BaseActivity implements MainContract.MainView 
 //                        dialogBottom.dismiss();
 //                    }, new DialogTextStyle.Builder(this).color(R.color.black).textSize(20).typeface(Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD))
 //                            .build())
-                .addBottomItem("About", v2 -> {
+                .addBottomItem("درباره ما", v2 -> {
                     mainActivityPresenter.openAboutClick();
                     dialogBottom.dismiss();
                 }, new DialogTextStyle.Builder(this).color(R.color.black).textSize(20).typeface(Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD))

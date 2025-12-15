@@ -20,7 +20,7 @@ public class Packager {
     }
 
     public static String negareshApplication(Context context) {
-        return "Version " + Packager.getVersionName(context);
+        return "نگارش " + Packager.getVersionName(context);
     }
 
     public static int getVersionCode(Context context) {
