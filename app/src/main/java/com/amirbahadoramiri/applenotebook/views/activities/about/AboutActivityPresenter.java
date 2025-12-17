@@ -20,8 +20,8 @@ public class AboutActivityPresenter implements AboutContract.AboutPresenter {
     }
 
     @Override
-    public void telegramClick() {
-        aboutView.openTelegram();
+    public void myketClick() {
+        aboutView.openMyket();
     }
 
     @Override

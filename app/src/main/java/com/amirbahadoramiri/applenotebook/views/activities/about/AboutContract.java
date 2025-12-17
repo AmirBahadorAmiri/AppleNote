@@ -6,7 +6,7 @@ public interface AboutContract {
 
     interface AboutView extends BaseContract.BaseView {
         void openGithub();
-        void openTelegram();
+        void openMyket();
         void openGmail();
     }
 
@@ -19,7 +19,7 @@ public interface AboutContract {
         void onDetach();
 
         void githubClick();
-        void telegramClick();
+        void myketClick();
         void gmailClick();
 
     }

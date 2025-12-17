@@ -22,7 +22,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/activity_note_save_btn"
-        android:text="Done"
+        android:text="ثبت"
         android:textColor="@color/ios_gray"
         android:layout_marginRight="16dp"
         app:layout_constraintTop_toTopOf="@id/activity_note_backicon"
@@ -62,7 +62,7 @@
         android:textSize="24sp"
         app:layout_constraintTop_toTopOf="@id/activity_note_backicon"
         app:layout_constraintLeft_toRightOf="@id/activity_note_backicon"
-        android:text="All Notes"
+        android:text="یادداشت ها"
         android:textColor="@color/ios_gold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
@@ -82,7 +82,7 @@
         android:id="@+id/activity_note_titlebar"
         android:layout_marginRight="16dp"
         android:layout_marginLeft="16dp"
-        android:hint="Title..."
+        android:hint="تیتر..."
         android:textSize="20sp"
         android:maxLines="1"
         android:maxLength="32"
@@ -109,7 +109,7 @@
         android:textSize="16sp"
         android:gravity="top"
         android:padding="8dp"
-        android:hint="Insert Text Here"
+        android:hint="متن خود را وارد کنید ..."
         app:layout_constraintTop_toBottomOf="@id/activity_note_titlebar"
         android:textColorHint="@color/ios_darkgray"
         app:layout_constraintRight_toRightOf="parent"

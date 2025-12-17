@@ -106,7 +106,7 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/activity_about_telegram"
-        app:srcCompat="@drawable/ic_telegram"
+        app:srcCompat="@drawable/myket_logo"
         android:clickable="true"
         android:focusable="true"
         android:background="?attr/selectableItemBackgroundBorderless"
@@ -114,8 +114,8 @@
         app:layout_constraintBottom_toBottomOf="@id/activity_about_github"
         app:layout_constraintLeft_toRightOf="@id/activity_about_github"
         android:layout_marginLeft="16dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="100dp"
+        android:layout_height="0dp" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:gravity="center"
