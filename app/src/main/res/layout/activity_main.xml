@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/ios_white"
+    android:background="@drawable/bg0"
     tools:context=".views.activities.main.MainActivity">
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -22,17 +22,17 @@
         app:srcCompat="@drawable/ic_ios_menu" />
 
     <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/activity_main_create_note"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginRight="16dp"
-        app:layout_constraintTop_toTopOf="@id/activity_main_ios_menu"
-        app:layout_constraintBottom_toBottomOf="@id/activity_main_ios_menu"
-        app:layout_constraintRight_toLeftOf="@id/activity_main_ios_menu"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true"
-        android:id="@+id/activity_main_create_note"
-        app:srcCompat="@drawable/ic_pencil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        app:layout_constraintBottom_toBottomOf="@id/activity_main_ios_menu"
+        app:layout_constraintRight_toLeftOf="@id/activity_main_ios_menu"
+        app:layout_constraintTop_toTopOf="@id/activity_main_ios_menu"
+        app:srcCompat="@drawable/ic_pencil" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/activity_main_title_all_notes"

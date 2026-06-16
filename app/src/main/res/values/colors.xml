@@ -2,13 +2,14 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="transparent_white">#80FFFFFF</color>
     <color name="ios_gold">#E0B650</color>
     <color name="ios_white">#F2F1F6</color>
     <color name="ios_gray">#E4E3E9</color>
     <color name="ios_darkgray">#9FA0A3</color>
 
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
+    <color name="teal_200">#03DAC5</color>
+    <color name="teal_700">#018786</color>
 
     <color name="ios_like_grey">#6c6c70</color>
     <color name="ios_like_grey2">#8e8e93</color>
@@ -27,6 +28,6 @@
     <color name="ios_like_purple">#8944ab</color>
     <color name="ios_like_yellow">#a05a00</color>
     <color name="ios_like_red">#d70015</color>
-    <color name="transparent">#00000000</color>
+    <color name="transparent">@android:color/transparent</color>
 
 </resources>

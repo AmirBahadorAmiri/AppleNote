@@ -3,9 +3,74 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/statusBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="24dp"
+        android:paddingTop="36dp"
+        android:paddingRight="24dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="۹:۴۱" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_blobs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="● ● ● ● ●   Irancell"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_wifi"
+                android:layout_width="18dp"
+                android:layout_height="12dp"
+                android:src="@drawable/ic_wifi"
+                app:tint="@color/black" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_battery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="۱۰۰%"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_battery"
+                android:layout_width="24dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_battery"
+                app:tint="@color/black" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/activity_note_backicon"
@@ -17,20 +82,20 @@
         android:clickable="true"
         android:focusable="true"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/statusBar"
         app:srcCompat="@drawable/ic_ios_back" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/activity_note_save_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="16dp"
         android:text="ثبت"
         android:textColor="@color/ios_gray"
-        android:layout_marginRight="16dp"
-        app:layout_constraintTop_toTopOf="@id/activity_note_backicon"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@id/activity_note_backicon"
         app:layout_constraintRight_toRightOf="parent"
-        android:textSize="24sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        app:layout_constraintTop_toTopOf="@id/activity_note_backicon" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/activity_note_menuicon"
@@ -40,8 +105,8 @@
         android:background="?attr/selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true"
-        app:layout_constraintRight_toLeftOf="@id/activity_note_save_btn"
         app:layout_constraintBottom_toBottomOf="@id/activity_note_backicon"
+        app:layout_constraintRight_toLeftOf="@id/activity_note_save_btn"
         app:layout_constraintTop_toTopOf="@id/activity_note_backicon"
         app:srcCompat="@drawable/ic_ios_menu" />
 
@@ -50,72 +115,73 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="16dp"
-        app:layout_constraintRight_toLeftOf="@id/activity_note_menuicon"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true"
         app:layout_constraintBottom_toBottomOf="@id/activity_note_backicon"
+        app:layout_constraintRight_toLeftOf="@id/activity_note_menuicon"
         app:layout_constraintTop_toTopOf="@id/activity_note_backicon"
         app:srcCompat="@drawable/ic_ios_share" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:textSize="24sp"
-        app:layout_constraintTop_toTopOf="@id/activity_note_backicon"
-        app:layout_constraintLeft_toRightOf="@id/activity_note_backicon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="یادداشت ها"
         android:textColor="@color/ios_gold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:textSize="24sp"
+        app:layout_constraintLeft_toRightOf="@id/activity_note_backicon"
+        app:layout_constraintTop_toTopOf="@id/activity_note_backicon" />
 
-<androidx.appcompat.widget.AppCompatTextView
-    tools:text="13:47 07 December 2025"
-    android:id="@+id/activity_note_timeview"
-    android:textColor="@color/ios_darkgray"
-    android:textSize="12sp"
-    app:layout_constraintTop_toBottomOf="@id/activity_note_backicon"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintLeft_toLeftOf="parent"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/activity_note_timeview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/ios_darkgray"
+        android:textSize="12sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_note_backicon"
+        tools:text="13:47 07 December 2025" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/activity_note_titlebar"
-        android:layout_marginRight="16dp"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
         android:layout_marginLeft="16dp"
-        android:hint="تیتر..."
-        android:textSize="20sp"
-        android:maxLines="1"
-        android:maxLength="32"
-        android:inputType="text"
+        android:layout_marginTop="32dp"
+        android:layout_marginRight="16dp"
+        android:background="@android:color/transparent"
         android:gravity="center_vertical"
+        android:hint="تیتر..."
+        android:inputType="text"
+        android:maxLength="32"
+        android:maxLines="1"
         android:padding="8dp"
-        android:textStyle="bold"
         android:textColor="@color/black"
         android:textColorHint="@color/ios_darkgray"
-        android:background="@android:color/transparent"
-        android:layout_marginTop="32dp"
-        app:layout_constraintTop_toBottomOf="@id/activity_note_timeview"
-        app:layout_constraintRight_toRightOf="parent"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_width="0dp"
-        android:layout_height="50dp" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_note_timeview" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/activity_note_textbar"
-        android:layout_marginRight="16dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginLeft="16dp"
-        android:textColor="@color/black"
+        android:layout_marginRight="16dp"
         android:background="@android:color/transparent"
-        android:textSize="16sp"
         android:gravity="top"
-        android:padding="8dp"
         android:hint="متن خود را وارد کنید ..."
-        app:layout_constraintTop_toBottomOf="@id/activity_note_titlebar"
+        android:lineSpacingExtra="12sp"
+        android:padding="8dp"
+        android:textColor="@color/black"
         android:textColorHint="@color/ios_darkgray"
-        app:layout_constraintRight_toRightOf="parent"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_width="0dp"
-        android:layout_height="0dp" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_note_titlebar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

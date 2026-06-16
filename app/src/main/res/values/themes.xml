@@ -1,9 +1,11 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.AppleNote" parent="Theme.Material3.DayNight.NoActionBar">
+<resources>
+
+    <style name="Theme.AppleNote" parent="Theme.Material3.Light.NoActionBar">
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowDisablePreview">true</item>
+        <item name="font">@font/san_francisco_medium</item>
+        <item name="fontFamily">@font/san_francisco_medium</item>
+        <item name="android:fontFamily">@font/san_francisco_medium</item>
     </style>
 
-    <style name="Theme.AppleNote" parent="Base.Theme.AppleNote" />
 </resources>

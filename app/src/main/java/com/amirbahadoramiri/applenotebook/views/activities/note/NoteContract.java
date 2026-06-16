@@ -21,6 +21,9 @@ public interface NoteContract {
 
         void shareText();
 
+        void openSettings();
+
+        void loadBackground();
     }
 
     interface NotePresenter extends BaseContract.BasePresenter<NoteView> {
@@ -40,6 +43,8 @@ public interface NoteContract {
         void onShareTextClick();
 
         void onMenuClick();
+
+        void onLoadBackground();
 
     }
 

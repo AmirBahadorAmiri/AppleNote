@@ -17,6 +17,7 @@ import com.amirbahadoramiri.applenotebook.adapter.NoteAdapter;
 import com.amirbahadoramiri.applenotebook.models.Note;
 import com.amirbahadoramiri.applenotebook.tools.logger.Logger;
 import com.amirbahadoramiri.applenotebook.tools.roomdb.RoomDB;
+import com.amirbahadoramiri.applenotebook.tools.sharedhelper.SharedHelper;
 import com.amirbahadoramiri.applenotebook.views.activities.about.AboutActivity;
 import com.amirbahadoramiri.applenotebook.views.activities.note.NoteActivity;
 import com.amirbahadoramiri.applenotebook.views.activities.settings.SettingsActivity;
@@ -33,11 +34,14 @@ public class MainActivity extends BaseActivity implements MainContract.MainView 
     RecyclerView activity_main_notes_recyclerview;
     NoteAdapter noteAdapter;
 
+    SharedHelper sharedHelper;
+
     public static final String EXTRA_KEY_NOTE = "NOTE_EXTRA";
     public static final int REQUEST_CODE = 999;
     public static final int RESULT_CODE_ADD_NOTE = 1001;
     public static final int RESULT_CODE_UPDATE_NOTE = 1002;
     public static final int RESULT_CODE_DELETE_NOTE = 1003;
+    public final int OPEN_SETTINGS = 1004;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +60,12 @@ public class MainActivity extends BaseActivity implements MainContract.MainView 
     }
 
     private void setupViews() {
+
+        sharedHelper = SharedHelper.getInstance(this);
+
+        if (sharedHelper.readInt("bg") == -1) {
+            sharedHelper.insert("bg", 0);
+        }
 
         noteAdapter = new NoteAdapter(this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -120,7 +130,7 @@ public class MainActivity extends BaseActivity implements MainContract.MainView 
 
     @Override
     public void openSettings() {
-        startActivity(new Intent(this, SettingsActivity.class));
+        startActivityForResult(new Intent(this, SettingsActivity.class), OPEN_SETTINGS);
     }
 
     @Override
@@ -140,11 +150,11 @@ public class MainActivity extends BaseActivity implements MainContract.MainView 
                     dialogBottom.dismiss();
                 }, new DialogTextStyle.Builder(this).color(R.color.ios_like_red).textSize(20).typeface(Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD))
                         .build())
-//                    .addBottomItem("Settings", v2 -> {
-//                        mainActivityPresenter.openSettingsClick();
-//                        dialogBottom.dismiss();
-//                    }, new DialogTextStyle.Builder(this).color(R.color.black).textSize(20).typeface(Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD))
-//                            .build())
+                .addBottomItem("تنظیمات", v2 -> {
+                    mainActivityPresenter.openSettingsClick();
+                    dialogBottom.dismiss();
+                }, new DialogTextStyle.Builder(this).color(R.color.black).textSize(20).typeface(Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD))
+                        .build())
                 .addBottomItem("درباره ما", v2 -> {
                     mainActivityPresenter.openAboutClick();
                     dialogBottom.dismiss();

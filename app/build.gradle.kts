@@ -17,8 +17,8 @@ android {
         applicationId = "com.amirbahadoramiri.applenotebook"
         minSdk = 24
         targetSdk = 36
-        versionCode = 4
-        versionName = "1.0.3"
+        versionCode = 5
+        versionName = "1.1.0"
         multiDexEnabled = true
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -55,8 +55,5 @@ dependencies {
     implementation("androidx.room:room-runtime:2.8.4")
     annotationProcessor("androidx.room:room-compiler:2.8.4")
     implementation("androidx.room:room-rxjava3:2.8.4")
-
-    implementation("io.github.inflationx:calligraphy3:3.1.1")
-    implementation("io.github.inflationx:viewpump:2.1.1")
 
 }

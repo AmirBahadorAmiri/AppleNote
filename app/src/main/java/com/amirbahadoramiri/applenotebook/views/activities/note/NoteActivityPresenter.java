@@ -139,4 +139,13 @@ public class NoteActivityPresenter implements NoteContract.NotePresenter {
     public void onMenuClick() {
         noteView.openMenu();
     }
+
+    @Override
+    public void onLoadBackground() {
+        noteView.loadBackground();
+    }
+
+    public void openSettingsClick() {
+        noteView.openSettings();
+    }
 }
