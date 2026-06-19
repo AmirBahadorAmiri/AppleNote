@@ -33,4 +33,10 @@ AppleNote/
 
 کلون کنید:
    ```bash
-   git clone https://github.com/AmirBahadorAmiri/AppleNote.git```
+   git clone https://github.com/AmirBahadorAmiri/AppleNote.git
+   ```
+
+<br><br>
+## تصاویر پروژه
+
+<img width="300" height="600" alt="IMG1" src="/adobe%20xd/xd%20screenshot/IMG1.png" /> <img width="300" height="600" alt="IMG1" src="/adobe%20xd/xd%20screenshot/IMG2.png" /> <img width="300" height="600" alt="IMG1" src="/adobe%20xd/xd%20screenshot/IMG3.png" />
