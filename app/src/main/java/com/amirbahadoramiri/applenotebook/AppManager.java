@@ -8,6 +8,6 @@ public class AppManager extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        SharedHelper.init();
+        SharedHelper.init(this);
     }
 }

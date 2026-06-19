@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 
 /*
  *   Created by: @AmirBahadorAmiri
- *   Created at: 2026-06-12 16:59:29
+ *   Update at: 2026-06-18 09:55:48
  *   Github: https://github.com/AmirBahadorAmiri
  */
 
@@ -17,16 +17,18 @@ public class SharedHelper {
     private static SharedPreferences sharedPreferences;
     private static SharedPreferences.Editor sharedPreferencesEditor;
 
-    private SharedHelper() {}
+    private SharedHelper(Context context) {
+        sharedPreferences = context.getSharedPreferences(SHARED_KEY, Context.MODE_PRIVATE);
+        sharedPreferencesEditor = sharedPreferences.edit();
+    }
 
-    public static void init() {
-        if ( sharedHelper == null ) sharedHelper = new SharedHelper();
+    public static void init(Context context) {
+        if ( sharedHelper == null | sharedPreferences == null | sharedPreferencesEditor == null )
+            sharedHelper = new SharedHelper(context);
     }
 
     public static SharedHelper getInstance(Context context) {
-        init();
-        sharedPreferences = context.getSharedPreferences(SHARED_KEY, Context.MODE_PRIVATE);
-        sharedPreferencesEditor = sharedPreferences.edit();
+        init(context);
         return sharedHelper;
     }
 
