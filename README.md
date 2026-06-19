@@ -39,4 +39,4 @@ AppleNote/
 <br><br>
 ## تصاویر پروژه
 
-<img width="280" height="600" alt="IMG1" src="/adobe%20xd/xd%20screenshot/IMG1.png" /> <img width="280" height="600" alt="IMG1" src="/adobe%20xd/xd%20screenshot/IMG2.png" /> <img width="280" height="600" alt="IMG1" src="/adobe%20xd/xd%20screenshot/IMG3.png" />
+<img width="250" alt="IMG1" src="/adobe%20xd/xd%20screenshot/IMG1.png" /> <img width="250" alt="IMG1" src="/adobe%20xd/xd%20screenshot/IMG2.png" /> <img width="250" alt="IMG1" src="/adobe%20xd/xd%20screenshot/IMG3.png" />
