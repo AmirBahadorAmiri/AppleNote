@@ -10,25 +10,7 @@
 - پشتیبانی از Gradle (KTS)
 - طراحی اولیه با Adobe XD (فایل .xd و اسکرین‌شات‌های دقیق)
 <br><br>
-## ساختار پروژه
 
-```
-AppleNote/
-├── app/                  # کد اصلی اپلیکیشن
-├── adobe xd/             # طراحی UI با Adobe XD
-│   ├── icons/            # آیکون‌ها و آیکون‌های iOS
-│   ├── xd screenshot/    # اسکرین‌شات‌های نهایی طراحی
-│   └── applenotebook.xd  # فایل اصلی طراحی در Adobe XD
-├── .idea/                # تنظیمات استودیو (Java، Gradle و ...)
-├── build.gradle.kts
-├── gradle/
-├── gradlew
-├── gradlew.bat
-├── settings.gradle.kts
-└── .gitignore
-```
-
-<br><br>
 ## چطور شروع کنیم؟
 
 کلون کنید:
