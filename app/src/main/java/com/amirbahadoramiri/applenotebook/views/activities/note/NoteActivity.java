@@ -74,7 +74,7 @@ public class NoteActivity extends BaseActivity implements NoteContract.NoteView,
 
         sharedHelper = SharedHelper.getInstance(this);
 
-        loadBackground();
+        loadSettings();
 
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
@@ -89,7 +89,6 @@ public class NoteActivity extends BaseActivity implements NoteContract.NoteView,
 
         findViewById(R.id.activity_note_backicon).setOnClickListener(v -> noteActivityPresenter.onBackClick());
         findViewById(R.id.activity_note_save_btn).setOnClickListener(v -> noteActivityPresenter.onSaveClick(getTitleEditText(), getTextEditText()));
-
 
         findViewById(R.id.activity_note_shareicon).setOnClickListener(v -> {
             noteActivityPresenter.onShareTextClick();
@@ -158,7 +157,7 @@ public class NoteActivity extends BaseActivity implements NoteContract.NoteView,
                 }, new DialogTextStyle.Builder(this).color(R.color.ios_like_green).textSize(20).typeface(Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD))
                         .build())
                 .addBottomItem("حذف یادداشت", v2 -> {
-                    noteActivityPresenter.onDeleteCLick();
+                    noteActivityPresenter.onDeleteCLick(this);
                     dialogBottom.dismiss();
                 }, new DialogTextStyle.Builder(this).color(R.color.ios_like_red).textSize(20).typeface(Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD))
                         .build())
@@ -191,7 +190,7 @@ public class NoteActivity extends BaseActivity implements NoteContract.NoteView,
     }
 
     @Override
-    public void loadBackground() {
+    public void loadSettings() {
         int bg = sharedHelper.readInt("bg");
         if (bg == 0) {
             main.setBackgroundResource(R.drawable.bg0);
@@ -229,6 +228,11 @@ public class NoteActivity extends BaseActivity implements NoteContract.NoteView,
             activity_note_titlebar.setTextColor(ContextCompat.getColor(this, R.color.white));
             activity_note_textbar.setTextColor(ContextCompat.getColor(this, R.color.white));
         }
+
+        int fontSize = sharedHelper.readInt("textSize");
+        if (fontSize != -1) {
+            activity_note_textbar.setTextSize(fontSize);
+        }
     }
 
     @Override
@@ -254,7 +258,7 @@ public class NoteActivity extends BaseActivity implements NoteContract.NoteView,
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == OPEN_SETTINGS) {
-            loadBackground();
+            loadSettings();
         }
     }
 }

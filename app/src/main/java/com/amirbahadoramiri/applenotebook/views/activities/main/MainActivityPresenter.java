@@ -1,9 +1,14 @@
 package com.amirbahadoramiri.applenotebook.views.activities.main;
 
+import android.content.Context;
 import android.widget.Toast;
 
+import com.amirbahadoramiri.applenotebook.R;
 import com.amirbahadoramiri.applenotebook.models.Note;
 import com.amirbahadoramiri.applenotebook.tools.roomdb.NoteDao;
+import com.github.amirbahadoramiri.telegramdialog.library.TeleDirection;
+import com.github.amirbahadoramiri.telegramdialog.two.TeleDialogDouble;
+import com.github.amirbahadoramiri.telegramdialog.two.TeleDialogDoubleListener;
 
 import java.util.List;
 
@@ -36,28 +41,53 @@ public class MainActivityPresenter implements MainContract.MainPresenter {
     }
 
     @Override
-    public void onDeleteAllNote(int count) {
+    public void onDeleteAllNote(Context context, int count) {
         if (count == 0) {
             mainView.showToast("لیست نوت ها خالی میباشد", Toast.LENGTH_SHORT);
         } else {
-            noteDao.deleteAll()
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new CompletableObserver() {
-                        @Override
-                        public void onSubscribe(@io.reactivex.rxjava3.annotations.NonNull Disposable d) {
-                        }
 
-                        @Override
-                        public void onComplete() {
-                            mainView.deleteAllNotes();
-                            mainView.showToast("تمامی نوت ها پاک شدند", Toast.LENGTH_SHORT);
-                        }
+            TeleDialogDouble teleDialogDouble = new TeleDialogDouble(context)
+                    .setDirection(TeleDirection.RTL)
+                    .setTitle("هشدار")
+                    .setMessage("آیا از حذف همه یادداشت ها اطمینان دارید؟")
+                    .setButtonOneText("بله")
+                    .setButtonOneTextColor(R.color.ios_like_red)
+                    .setButtonOneRippleColor(R.color.ios_like_red_tint)
+                    .setButtonTwoText("خیر")
+                    .setButtonTwoTextColor(R.color.ios_like_blue)
+                    .setButtonTwoRippleColor(R.color.ios_like_blue_tint);
 
-                        @Override
-                        public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {
-                        }
-                    });
+            teleDialogDouble.setOnClickListener(new TeleDialogDoubleListener() {
+                @Override
+                public void onFirstButtonClicked() {
+                    noteDao.deleteAll()
+                            .subscribeOn(Schedulers.io())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe(new CompletableObserver() {
+                                @Override
+                                public void onSubscribe(@io.reactivex.rxjava3.annotations.NonNull Disposable d) {
+                                }
+
+                                @Override
+                                public void onComplete() {
+                                    mainView.deleteAllNotes();
+                                    mainView.showToast("تمامی نوت ها پاک شدند", Toast.LENGTH_SHORT);
+                                }
+
+                                @Override
+                                public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {
+                                }
+                            });
+                    teleDialogDouble.dismiss();
+                }
+
+                @Override
+                public void onSecondButtonClicked() {
+                    teleDialogDouble.dismiss();
+                }
+            });
+
+            teleDialogDouble.show();
         }
     }
 

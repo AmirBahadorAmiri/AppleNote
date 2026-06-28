@@ -8,5 +8,15 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# App Module
+/app/build/
 /app/release/
 /app/release/*
+
+# By Format
+*.apk
+
+# Keystore files
+*.jks
+*.keystore

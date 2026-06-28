@@ -15,8 +15,8 @@ public class AboutActivityPresenter implements AboutContract.AboutPresenter {
     }
 
     @Override
-    public void githubClick() {
-        aboutView.openGithub();
+    public void appRepositoryClick() {
+        aboutView.openAppRepository();
     }
 
     @Override
@@ -27,5 +27,10 @@ public class AboutActivityPresenter implements AboutContract.AboutPresenter {
     @Override
     public void gmailClick() {
         aboutView.openGmail();
+    }
+
+    @Override
+    public void userGithubClick() {
+        aboutView.openGithub();
     }
 }

@@ -1,5 +1,7 @@
 package com.amirbahadoramiri.applenotebook.views.activities.main;
 
+import android.content.Context;
+
 import com.amirbahadoramiri.applenotebook.models.Note;
 import com.amirbahadoramiri.applenotebook.views.bases.BaseContract;
 
@@ -36,7 +38,7 @@ public interface MainContract {
         @Override
         void onDetach();
 
-        void onDeleteAllNote(int count);
+        void onDeleteAllNote(Context context, int count);
 
         void onNewNoteClick();
 

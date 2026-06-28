@@ -1,11 +1,16 @@
 package com.amirbahadoramiri.applenotebook.views.activities.note;
 
+import android.content.Context;
 import android.widget.Toast;
 
+import com.amirbahadoramiri.applenotebook.R;
 import com.amirbahadoramiri.applenotebook.models.Note;
 import com.amirbahadoramiri.applenotebook.tools.logger.Logger;
 import com.amirbahadoramiri.applenotebook.tools.roomdb.NoteDao;
 import com.amirbahadoramiri.applenotebook.views.activities.main.MainActivity;
+import com.github.amirbahadoramiri.telegramdialog.library.TeleDirection;
+import com.github.amirbahadoramiri.telegramdialog.two.TeleDialogDouble;
+import com.github.amirbahadoramiri.telegramdialog.two.TeleDialogDoubleListener;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.annotations.NonNull;
@@ -41,29 +46,53 @@ public class NoteActivityPresenter implements NoteContract.NotePresenter {
     }
 
     @Override
-    public void onDeleteCLick() {
+    public void onDeleteCLick(Context context) {
         if (old_note == null) {
             noteView.showToast("نوت ساخته نشده که دیلیت نمیشه :)", Toast.LENGTH_SHORT);
         } else {
-            Logger.logd("note presenter ondelete , old_note id: " + old_note.getId());
-            noteDao.delete(old_note)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new CompletableObserver() {
-                        @Override
-                        public void onSubscribe(@NonNull Disposable d) {
-                        }
+            TeleDialogDouble teleDialogDouble = new TeleDialogDouble(context)
+                    .setDirection(TeleDirection.RTL)
+                    .setTitle("هشدار")
+                    .setMessage("آیا از حذف همه یادداشت ها اطمینان دارید؟")
+                    .setButtonOneText("بله")
+                    .setButtonOneTextColor(R.color.ios_like_red)
+                    .setButtonOneRippleColor(R.color.ios_like_red_tint)
+                    .setButtonTwoText("خیر")
+                    .setButtonTwoTextColor(R.color.ios_like_blue)
+                    .setButtonTwoRippleColor(R.color.ios_like_blue_tint);
 
-                        @Override
-                        public void onComplete() {
-                            Logger.logd("note presenter onComplete , old_note id: " + old_note.getId());
-                            noteView.deleteNote(old_note);
-                        }
+            teleDialogDouble.setOnClickListener(new TeleDialogDoubleListener() {
+                @Override
+                public void onFirstButtonClicked() {
+                    Logger.logd("note presenter ondelete , old_note id: " + old_note.getId());
+                    noteDao.delete(old_note)
+                            .subscribeOn(Schedulers.io())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe(new CompletableObserver() {
+                                @Override
+                                public void onSubscribe(@NonNull Disposable d) {
+                                }
 
-                        @Override
-                        public void onError(@NonNull Throwable e) {
-                        }
-                    });
+                                @Override
+                                public void onComplete() {
+                                    Logger.logd("note presenter onComplete , old_note id: " + old_note.getId());
+                                    noteView.deleteNote(old_note);
+                                }
+
+                                @Override
+                                public void onError(@NonNull Throwable e) {
+                                }
+                            });
+                    teleDialogDouble.dismiss();
+                }
+
+                @Override
+                public void onSecondButtonClicked() {
+                    teleDialogDouble.dismiss();
+                }
+            });
+
+            teleDialogDouble.show();
         }
     }
 
@@ -141,8 +170,8 @@ public class NoteActivityPresenter implements NoteContract.NotePresenter {
     }
 
     @Override
-    public void onLoadBackground() {
-        noteView.loadBackground();
+    public void onLoadSettings() {
+        noteView.loadSettings();
     }
 
     public void openSettingsClick() {

@@ -15,10 +15,10 @@ android {
 
     defaultConfig {
         applicationId = "com.amirbahadoramiri.applenotebook"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 36
-        versionCode = 5
-        versionName = "1.1.0"
+        versionCode = 7
+        versionName = "1.2.1"
         multiDexEnabled = true
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -55,5 +55,7 @@ dependencies {
     implementation("androidx.room:room-runtime:2.8.4")
     annotationProcessor("androidx.room:room-compiler:2.8.4")
     implementation("androidx.room:room-rxjava3:2.8.4")
+
+    implementation("com.github.AmirBahadorAmiri:TelegramDialog:1.3.1")
 
 }

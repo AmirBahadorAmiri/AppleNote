@@ -24,6 +24,8 @@ import com.amirbahadoramiri.applenotebook.views.activities.settings.SettingsActi
 import com.amirbahadoramiri.applenotebook.views.bases.BaseActivity;
 import com.civitasv.ioslike.dialog.DialogBottom;
 import com.civitasv.ioslike.model.DialogTextStyle;
+import com.github.amirbahadoramiri.telegramdialog.library.TeleDirection;
+import com.github.amirbahadoramiri.telegramdialog.two.TeleDialogDouble;
 
 import java.util.List;
 import java.util.Objects;
@@ -65,6 +67,9 @@ public class MainActivity extends BaseActivity implements MainContract.MainView 
 
         if (sharedHelper.readInt("bg") == -1) {
             sharedHelper.insert("bg", 0);
+        }
+        if ( sharedHelper.readInt("textSize") == -1) {
+            sharedHelper.insert("textSize",16);
         }
 
         noteAdapter = new NoteAdapter(this);
@@ -146,7 +151,7 @@ public class MainActivity extends BaseActivity implements MainContract.MainView 
                 .setCancelStyle(new DialogTextStyle.Builder(this).color(R.color.black).typeface(Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD))
                         .build())
                 .addBottomItem("حذف همه‌ی یادداشت ها", v2 -> {
-                    mainActivityPresenter.onDeleteAllNote(noteAdapter.getItemCount());
+                    mainActivityPresenter.onDeleteAllNote(this,noteAdapter.getItemCount());
                     dialogBottom.dismiss();
                 }, new DialogTextStyle.Builder(this).color(R.color.ios_like_red).textSize(20).typeface(Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD))
                         .build())
