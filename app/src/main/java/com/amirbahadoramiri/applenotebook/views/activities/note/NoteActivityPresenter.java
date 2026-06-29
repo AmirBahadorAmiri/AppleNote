@@ -53,7 +53,7 @@ public class NoteActivityPresenter implements NoteContract.NotePresenter {
             TeleDialogDouble teleDialogDouble = new TeleDialogDouble(context)
                     .setDirection(TeleDirection.RTL)
                     .setTitle("هشدار")
-                    .setMessage("آیا از حذف همه یادداشت ها اطمینان دارید؟")
+                    .setMessage("آیا از حذف یادداشت اطمینان دارید؟")
                     .setButtonOneText("بله")
                     .setButtonOneTextColor(R.color.ios_like_red)
                     .setButtonOneRippleColor(R.color.ios_like_red_tint)
